@@ -1,3 +1,6 @@
 # text-encryption-tool
-this is an simple python program that can encrypt and decrypt the message with the help of the key 
-if you don't have an key just press enter and the program will crate an random key for you for encryption and decrypt
+
+This is a simple Python program that can encrypt and decrypt messages with the help of a key.  
+If you don’t have a key, just press Enter, and the program will create a random one for you.
+
+You can use this key for both encryption and decryption.
