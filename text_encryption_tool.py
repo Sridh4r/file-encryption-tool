@@ -1,11 +1,12 @@
 import string
 import random
 
+# Keep prompting the user to enter a valid key until it's correct or they opt to exit
 def validKey(key):
     if not key:
         return key
-    elif len(key)!=95 or len(set(key))!=95:
-        print("Your key is invalid make sure it contain 95 unique characters")
+    elif len(key)!=95 or len(set(key))!=95 or set(key)!=set(string.ascii_letters+string.digits+string.punctuation+" "):
+        print("Invalid key! Make sure it has exactly 95 unique ASCII characters (no emojis or missing symbols).")
         x=input("do you have a valid Key (Y/N) if no the program will produce a new key: ").upper()
         if x=='Y':
             key=input("Enter your valid key: ")
@@ -15,9 +16,11 @@ def validKey(key):
     return key
 
 
+ # Print a horizontal line to separate output sections
 def printLine():
     print("-----------------------------------------------")
 
+# Create a key-value mapping using a dictionary. If no key is provided, generate one automatically.
 def encrypt(key=None):
     value=string.ascii_letters+string.digits+string.punctuation+" "
     value_char=list(value)
@@ -32,11 +35,14 @@ def encrypt(key=None):
         map[value_char[i]]=key[i]
     return map , key
 
+# Encrypt the message by replacing each character with its corresponding value from the key mapping.
 def encrypt_message(message,cipher_map):
     encrypted_message=""
     for ch in message:
         encrypted_message+=cipher_map[ch]
     return encrypted_message
+
+# Decrypt the message by reversing the key-value pairs from the original dictionary and mapping each character accordingly.
 
 def decrypt_message(message,cipher_map):
     map_inv={v:k for k , v in cipher_map.items()}
@@ -46,7 +52,7 @@ def decrypt_message(message,cipher_map):
     return original_message
 
 
-
+# Controls the main program flow and handles errors like ValueError and invalid number selections.
 def main():
     printLine()
     print("- - - - - - - - Text Encryption- - - - - - - - ")
