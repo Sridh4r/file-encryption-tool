@@ -1,6 +1,14 @@
 import string
 import random
 
+def validKey(key):
+    if key==None or key=="":
+        return True
+    elif len(key)!=95:
+        return False
+    return True
+
+
 def printLine():
     print("*************************")
 
@@ -36,6 +44,15 @@ def decrypt_message(message,map):
 def main():
     printLine()
     key=input("Enter your key if you don't have one press enter: ")
+    if not validKey(key):
+        x=int(input("The key you have been provided is not valid press 1 to create new one press 2 to exit: "))
+        if x==1:
+            key=None
+        else:
+            print("Program exit")
+            printLine()
+            return
+       
     map,key=encrypt(key)
     while True:
         try:
