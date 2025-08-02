@@ -1,19 +1,43 @@
 import string
 import random
 
-# Keep prompting the user to enter a valid key until it's correct or they opt to exit
-def validKey(key):
+# Validates a substitution key; prompts to retry or generate a new one if invalid
+def validateKey(key):
     if not key:
         return key
-    elif len(key)!=95 or len(set(key))!=95 or set(key)!=set(string.ascii_letters+string.digits+string.punctuation+" "):
-        print("Invalid key! Make sure it has exactly 95 unique ASCII characters (no emojis or missing symbols).")
-        x=input("do you have a valid Key (Y/N) if no the program will produce a new key: ").upper()
-        if x=='Y':
-            key=input("Enter your valid key: ")
-            return validKey(key)
-        else:
+    if len(key)!=95 or len(set(key))!=95 or set(key)!=set(string.ascii_letters+string.digits+string.punctuation+" "):
+        n=input("No valid key found if you want to try again press 1 or press 2 for new key: ")
+        if n== "1":
+            key=input("Enter your key: ")
+            return validateKey(key)
+        elif n=="2":
+            print("new key generated")
             key=None
-    return key
+            return key
+        else:
+            print("Invalid input")
+        return validateKey(key)
+    else:
+        return key
+
+# Retrieves the encryption key from file or prompts user to enter/generate one
+def getKey():
+    try:
+        with open("encryption_key.txt","r") as f:
+            key=f.read()
+            return validateKey(key)
+    except FileNotFoundError:
+        n=input("No key found in your system. if you want enter it manually press 1 or press 2 for new key: ")
+        if n=="1":
+            key=input("Enter your Key: ")
+            return validateKey(key)
+        elif n=="2": 
+            print("new key generated")
+            key=None
+            return key
+        else:
+            print("Invalid input")
+    return validateKey(key)
 
 
  # Print a horizontal line to separate output sections
@@ -29,10 +53,10 @@ def encrypt(key=None):
         random.shuffle(key)
     else:
         key=list(key)
-    
     map={}
     for i in range(len(value_char)):
         map[value_char[i]]=key[i]
+    print(key)
     return map , key
 
 # Encrypt the message by replacing each character with its corresponding value from the key mapping.
@@ -57,15 +81,18 @@ def main():
     printLine()
     print("- - - - - - - - Text Encryption- - - - - - - - ")
     printLine()
-    key=input("Enter your key if you don't have one press enter: ")
-    key=validKey(key)
-        
+    
+    key=getKey()
+
+
+    print(key)  
        
     cipher_map,key=encrypt(key)
     while True:
         try:
             printLine()
-            n = int(input("What do you want to do with the meaage 1 -> encrypt  , 2 -> decrypt , 3 -> exit: "))
+            n = int(input("What do you want to do with the message 1 -> encrypt, 2 -> decrypt, 3 -> exit: "))
+
         except ValueError:
             print("Please enter a valid number (1, 2, or 3).")
             continue
@@ -74,18 +101,19 @@ def main():
             print(f"Encrypted message is: {encrypt_message(message,cipher_map)}")
             
         elif n==2:
-            message=input("Enter your decrypt message: ")
+            message=input("Enter your encrypted message: ")
             print(f"original message is: {decrypt_message(message,cipher_map)}")
             
 
         elif n==3:
-            print(f"here is your key for future reference:  {''.join(key)}")
+            with open("encryption_key.txt","w")as f:
+                f.write("".join(key))
+            print("""The key is saved in "encryption_key.txt" please avoid making any changes in the file""")
             break
             
         else:
             print("Please enter a valid input")
             
-
 
 
 if __name__=='__main__':
