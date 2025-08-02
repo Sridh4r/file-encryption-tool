@@ -56,7 +56,6 @@ def encrypt(key=None):
     map={}
     for i in range(len(value_char)):
         map[value_char[i]]=key[i]
-    print(key)
     return map , key
 
 # Encrypt the message by replacing each character with its corresponding value from the key mapping.
@@ -83,9 +82,6 @@ def main():
     printLine()
     
     key=getKey()
-
-
-    print(key)  
        
     cipher_map,key=encrypt(key)
     while True:
