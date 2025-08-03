@@ -1,0 +1,12 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Optional: Ignore the encryption key file if it contains sensitive data
+encryption_key.txt
+
+# Optional: Ignore system/IDE files
+.DS_Store
+*.swp
+*.sublime-workspace
+*.vscode/
