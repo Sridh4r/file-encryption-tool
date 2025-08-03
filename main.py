@@ -1,11 +1,12 @@
 import string
 import random
 
+value=string.ascii_letters+string.digits+string.punctuation+" "
 # Validates a substitution key; prompts to retry or generate a new one if invalid
 def validateKey(key):
     if not key:
         return key
-    if len(key)!=95 or len(set(key))!=95 or set(key)!=set(string.ascii_letters+string.digits+string.punctuation+" "):
+    if set(key)!=set(value):
         n=input("No valid key found if you want to try again press 1 or press 2 for new key: ")
         if n== "1":
             key=input("Enter your key: ")
@@ -45,7 +46,7 @@ def getKey():
 
 # Create a key-value mapping using a dictionary. If no key is provided, generate one automatically.
 def encrypt(key=None):
-    value=string.ascii_letters+string.digits+string.punctuation+" "
+    
     value_char=list(value)
     if not key:
         key=value_char.copy()
@@ -61,6 +62,9 @@ def encrypt(key=None):
 def encrypt_message(message,cipher_map):
     encrypted_message=""
     for ch in message:
+        if ch=="\n":
+            encrypted_message+="\n"
+            continue
         encrypted_message+=cipher_map[ch]
     return encrypted_message
 
@@ -70,6 +74,9 @@ def decrypt_message(message,cipher_map):
     map_inv={v:k for k , v in cipher_map.items()}
     original_message=""
     for ch in message:
+        if ch=="\n" or ch=="\t" or ch=="\r":
+            original_message+="\n"
+            continue
         original_message+=map_inv[ch]
     return original_message
 
