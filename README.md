@@ -71,3 +71,6 @@ Feel free to redesign the UI, improve the user experience, or add new frontend f
 6.  Open a Pull Request.
 
 We appreciate your help in making this tool better for everyone!
+
+## License
+This project is licensed under the [MIT License](LICENSE).
