@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{%block navigation%}{%endblock%}
+{%block content%}
+
+{%if message%}
+<div class="alert success">
+    {{message}}
+</div>
+{%endif%}
+<div class="sub_head">
+    <h4>Key Generation</h4>
+</div>
+
+{%if action==''%}
+<div class="input_field">
+<form action="{{url_for('new_key')}}" method="post">
+    <fieldset>
+        <legend>What would you like to do?</legend>    
+            <label>
+                <input type="radio" name="action" value="generate" required>
+                Generate a new key
+            </label>
+            <label>
+                <input type="radio" name="action" value="enter">
+                Enter a key manually
+            </label>
+
+        <button type="submit">Submit</button>
+    </fieldset>
+</form>
+</div>
+{%endif%}
+
+
+
+{%if action=='enter'%}
+<div class="input_field">
+<form action="{{url_for('validate_user_key')}}" method="post">
+    <label for="user_key">
+        Enter your Key:
+    </label>
+    <input type="text" name="user_key">
+    <input type="submit" value="check">
+</form>
+</div>
+{%endif%}
+
+
+
+{%endblock%}

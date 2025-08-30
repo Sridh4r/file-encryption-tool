@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}FortFile{%endblock%}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>FortFile</h1>
+    </header>
+    <div class="slogan">
+         <h4>-Fortress for your files</h4>
+    </div>
+   
+    {%block navigation%}
+    <nav>
+        <div class="navbar">
+        <ul class="navbar">
+            <li><a href="{{ url_for('display_index')}}">Home</a></li>
+            <li><a href="{{url_for('display_encrypt_page')}}">Encrypt</a></li>
+            <li><a href="{{url_for('display_decrypt_page')}}">Decrypt</a></li>
+        </ul>
+        </div>
+    </nav>
+    {%endblock%}
+    
+    {%block content%}{%endblock%}
+    {%block download%}
+    <h4>Please Download your key file</h4>
+    <form action="{{url_for('download_key')}}" method="post">
+        <input type="submit" value="Download Key">
+    </form>
+    <h5>warning!</h5>
+    <p>Please don't modify or delete the file</p>
+    {%endblock%}
+    
+</body>
+</html>

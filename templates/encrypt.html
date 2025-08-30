@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+{%block title%}
+    encryption
+{%endblock%}
+
+{%block content%}
+<div class="sub_head">
+    <h1>Encrypt</h1>
+</div>
+    <div class="input_field">
+    <form action="{{url_for('encrypt')}}" method="post"  enctype="multipart/form-data">
+        <input type="file" name="message" id="message" accept="*/*">
+        <input type="submit" value="download encrypted file">
+    </form>
+    </div>
+{%endblock%}

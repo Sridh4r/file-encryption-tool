@@ -3,8 +3,8 @@
 def encrypt_message(message,cipher_map):
     encrypted_message=""
     for ch in message:
-        if ch=="\n":
-            encrypted_message+="\n"
+        if ch not in cipher_map:
+            encrypted_message+=ch
             continue
         encrypted_message+=cipher_map[ch]
     return encrypted_message
@@ -15,8 +15,8 @@ def decrypt_message(message,cipher_map):
     map_inv={v:k for k , v in cipher_map.items()}
     original_message=""
     for ch in message:
-        if ch=="\n" or ch=="\t" or ch=="\r":
-            original_message+="\n"
+        if ch not in cipher_map:
+            original_message+=ch
             continue
         original_message+=map_inv[ch]
     return original_message
