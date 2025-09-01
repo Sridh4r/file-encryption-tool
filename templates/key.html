@@ -1,48 +1,53 @@
 {% extends 'base.html' %}
+{# Assumes base.html includes Bootstrap 5 CSS and JS #}
+
 {% block navigation %}{% endblock %}
 
 {% block content %}
-<div class="main-container">
-    <div class="key-container">
-        <h2 class="card__title">Key Management</h2>
-        <p class="card__subtitle">Upload your key file or generate a new one</p>
-        
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">
-                        {{ message }}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-4 p-md-5">
+                    <div class="text-center mb-4">
+                        <h2 class="card-title fw-bold">Key Management</h2>
+                        <p class="card-subtitle text-muted">Upload your key file or generate a new one</p>
                     </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+                    
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
 
-        <form action="{{ url_for('get_key') }}" method="post" enctype="multipart/form-data" class="key-form">
-            <div class="form-group">
-                <label for="key" class="form-label">Select your key file</label>
-                <div class="file-input__wrapper">
-                    <input type="file" class="file-input__native" name="key" id="key" required>
-                    <label for="key" class="file-input__label">
-                        <span class="icon">📁</span>
-                        <span>Click to browse or drag and drop your key file</span>
-                        <div class="text-sm text-muted mt-1">.key files only</div>
-                    </label>
+                    <form action="{{ url_for('get_key') }}" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="key" class="form-label">Select your key file</label>
+                            <input type="file" class="form-control" name="key" id="key" required>
+                            <div class="form-text">Only .key files are accepted.</div>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-shield-lock-fill me-2"></i>Start Forting
+                            </button>
+                            <a href="{{ url_for('generate_key') }}" class="btn btn-outline-secondary">
+                                <i class="bi bi-key-fill me-2"></i>Generate New Key
+                            </a>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <div class="key-actions">
-                <button type="submit" class="btn btn--primary">Start Forting</button>
-                <a href="{{ url_for('generate_key') }}" class="btn btn--link">
-                    <span class="icon">🔑</span> Generate New Key
-                </a>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<footer class="footer">
-    <p> 2024 FortFile - Your secure file encryption solution</p>
-</footer>
+
 {% endblock %}
 
 {% block download %}{% endblock %}

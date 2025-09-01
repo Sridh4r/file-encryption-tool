@@ -4,14 +4,24 @@
 {%endblock%}
 
 {%block content%}
-    <div class="sub_head">
-        <h1>Decrypt</h1>
-    </div>
-    <div class="input_field">
-    <form action="{{url_for('decrypt')}}" method="post" enctype="multipart/form-data">
-        <input type="file" name="encrypted_message" id="encrypted_message" accept="*/*">
-        <input type="submit" value="download decrypted file">
-    </form>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+        <div class="card shadow-lg border-0 rounded-lg" style="width: 100%; max-width: 500px;">
+            <div class="card-body p-5">
+                <h1 class="card-title text-center mb-4">Decrypt File</h1>
+                <p class="card-subtitle text-center text-muted mb-4">
+                    Upload your encrypted file to retrieve the original content.
+                </p>
+                <form action="{{url_for('decrypt')}}" method="post" enctype="multipart/form-data">
+                    <div class="mb-4">
+                        <label for="encrypted_message" class="form-label visually-hidden">Select encrypted file:</label>
+                        <input type="file" class="form-control form-control-lg" name="encrypted_message" id="encrypted_message" accept="*/*" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">Decrypt and Download</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     
 {%endblock%}

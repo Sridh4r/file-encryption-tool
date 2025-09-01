@@ -13,3 +13,4 @@ node_modules/
 *.swp
 *.sublime-workspace
 *.vscode/as
+static

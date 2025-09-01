@@ -1,69 +1,89 @@
 {%extends "base.html"%}
 {%block content%}
     {%if special_message%}
-        <div>
+        <div class="alert alert-warning text-center" role="alert">
             {{special_message}}
         </div>
     {%endif%}
 
-    <section class="hero">
-        <div class="container">
-            <h2>Secure Your Files with Encryption</h2>
-            <p class="lead">FortFile provides encryption to keep your sensitive files safe from prying eyes.</p>
-        </div>
-    </section>
+    
 
-    <section class="features">
+    <section class="features py-5">
         <div class="container">
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>File Encryption</h3>
-                    <p>Protect your files with encryption that ensure your data remains confidential.</p>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Why Choose FortFile?</h2>
+                <p class="lead text-muted">Our platform is built on three core principles to provide you with the best file security experience.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card h-100 text-center shadow-sm border-0">
+                        <div class="card-body p-4">
+                            
+                            <h3 class="h5 fw-bold">Robust Encryption</h3>
+                            <p class="text-muted">Utilizing industry-standard algorithms to ensure your data remains confidential and secure from unauthorized access.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Encrypt and decrypt files quickly without compromising on security or performance.</p>
+                <div class="col-lg-4">
+                    <div class="card h-100 text-center shadow-sm border-0">
+                        <div class="card-body p-4">
+                            
+                            <h3 class="h5 fw-bold">High Performance</h3>
+                            <p class="text-muted">Experience lightning-fast encryption and decryption without compromising on security or system performance.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔑</div>
-                    <h3>Key Management</h3>
-                    <p>Securely generate and manage your encryption keys with our intuitive interface.</p>
+                <div class="col-lg-4">
+                    <div class="card h-100 text-center shadow-sm border-0">
+                        <div class="card-body p-4">
+                            
+                            <h3 class="h5 fw-bold">User-Friendly</h3>
+                            <p class="text-muted">A clean, intuitive interface makes securing your files a simple and straightforward process for everyone.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="how-it-works">
+    <section class="how-it-works bg-light py-5">
         <div class="container">
-            <h2>How It Works</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Upload Your File</h3>
-                    <p>Select any file you want to secure from your device.</p>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">How It Works</h2>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="step mb-4">
+                        <div class="step-number">1</div>
+                        <h3 class="h5 fw-bold mt-3">Upload Your File</h3>
+                        <p class="text-muted">Select any file you want to secure from your device.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Encrypt/Decrypt</h3>
-                    <p>Choose to encrypt your file or decrypt an existing one.</p>
+                <div class="col-md-4">
+                    <div class="step mb-4">
+                        <div class="step-number">2</div>
+                        <h3 class="h5 fw-bold mt-3">Encrypt/Decrypt</h3>
+                        <p class="text-muted">Choose to encrypt your file or decrypt an existing one.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Download Securely</h3>
-                    <p>Get your processed file instantly with a single click.</p>
+                <div class="col-md-4">
+                    <div class="step mb-4">
+                        <div class="step-number">3</div>
+                        <h3 class="h5 fw-bold mt-3">Download Securely</h3>
+                        <p class="text-muted">Get your processed file instantly with a single click.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta">
+    <section class="cta py-5 text-center bg-white">
         <div class="container">
-            <h2>Ready to Secure Your Files?</h2>
+            <h2 class="fw-bold mb-4">Ready to Secure Your Files?</h2>
+            <p class="lead text-muted mb-4">Take the next step in protecting your digital life. Choose an option below to begin.</p>
             <div class="cta-buttons">
-                <a href="{{ url_for('display_encrypt_page') }}" class="btn btn-primary">Encrypt a File</a>
-                <a href="{{ url_for('display_decrypt_page') }}" class="btn btn-secondary">Decrypt a File</a>
+                <a href="{{ url_for('display_encrypt_page') }}" class="btn btn-primary btn-lg mx-2">Encrypt a File</a>
+                <a href="{{ url_for('display_decrypt_page') }}" class="btn btn-outline-secondary btn-lg mx-2">Decrypt a File</a>
             </div>
         </div>
     </section>
