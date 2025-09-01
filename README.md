@@ -26,8 +26,8 @@ This tool is for **educational and demonstrational purposes only**. The substitu
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/Sridh4r/text-encryption-tool.git
-    cd text-encryption-tool
+    git clone https://github.com/Sridh4r/file-encryption-tool.git
+    cd file-encryption-tool
     ```
 
 2.  **Install the dependencies:**
