@@ -51,26 +51,7 @@ The application uses a simple substitution cipher where each character is mapped
 -   **Encryption**: Replaces each character in the input file with its corresponding character from the key.
 -   **Decryption**: Replaces each character in the encrypted file with its original character using the key.
 
-## Contributing
 
-We welcome contributions to improve FortFile!
-
-### Calling All Frontend Developers!
-
-The backend is functional, but the user interface could use a modern touch. If you have an interest in frontend development (HTML, CSS, JavaScript) and would like to contribute, we would love your help!
-
-Feel free to redesign the UI, improve the user experience, or add new frontend features.
-
-### How to Contribute
-
-1.  Fork the repository.
-2.  Create a new branch (`git checkout -b feature/your-feature-name`).
-3.  Make your changes.
-4.  Commit your changes (`git commit -m 'Add some feature'`).
-5.  Push to the branch (`git push origin feature/your-feature-name`).
-6.  Open a Pull Request.
-
-We appreciate your help in making this tool better for everyone!
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
