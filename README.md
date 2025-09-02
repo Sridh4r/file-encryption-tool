@@ -2,8 +2,6 @@
 
 FortFile is a web-based tool for encrypting and decrypting text files using a simple substitution cipher. It's designed as an educational project to demonstrate the basic principles of web applications and encryption.
 
-**⚠️ Important Security Disclaimer**
-This tool is for **educational and demonstrational purposes only**. The substitution cipher used is **not secure** and can be easily broken. **Do not use this tool to protect sensitive or private data.** For real-world security, please use industry-standard encryption tools like VeraCrypt, GPG, or BitLocker.
 
 ## Features
 
