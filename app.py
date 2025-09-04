@@ -112,7 +112,7 @@ def download_key():
     key_data.seek(0)
     return send_file(
         key_data,
-        download_name='key.txt',
+        download_name='key.key',
         as_attachment=True
     )
 
