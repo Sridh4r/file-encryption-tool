@@ -3,8 +3,6 @@ __pycache__/
 *.py[cod]
 
 # Optional: Ignore the encryption key file if it contains sensitive data
-#encryption_key.txt
-encryption_key.txt
 package.json
 package-lock.json
 node_modules/
