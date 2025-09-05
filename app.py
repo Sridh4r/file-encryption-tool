@@ -7,21 +7,21 @@ app=Flask(__name__,template_folder="templates")
 app.secret_key = os.environ.get("SECRET_KEY", secrets.token_hex(16))
 
 
-@app.route("/")
+@app.route("/",methods=["POST","GET"])
 def display_get_key():
     return render_template('key.html')
 
 
-@app.route("/index")
+@app.route("/index",methods=["POST","GET"])
 def display_index():
     return render_template("index.html", special_message=request.args.get('special_message'))
 
-@app.route("/display_encrypt")
+@app.route("/display_encrypt",methods=["POST","GET"])
 def display_encrypt_page():
     encrypted_message=""
     return render_template("encrypt.html",encrypted_message=encrypted_message)
 
-@app.route("/display_decrypt")
+@app.route("/display_decrypt",methods=["POST","GET"])
 def display_decrypt_page():
     original_message=""
     return render_template("decrypt.html",original_message=original_message)
