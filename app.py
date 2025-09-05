@@ -27,7 +27,7 @@ def display_decrypt_page():
     return render_template("decrypt.html",original_message=original_message)
 
 
-@app.route("/encrypt",methods=["POST"])
+@app.route("/encrypt",methods=["POST","GET"])
 def encrypt():
     file=request.files.get('message')
     if not file or file.filename=="":
@@ -47,7 +47,7 @@ def encrypt():
             
         )
 
-@app.route("/decrypt",methods=["POST"])
+@app.route("/decrypt",methods=["POST","GET"])
 def decrypt():
     file=request.files.get('encrypted_message')
     if not file or file.filename=="":
@@ -69,7 +69,7 @@ def decrypt():
         )
     
     
-@app.route("/get_key",methods=["POST"])
+@app.route("/get_key",methods=["POST","GET"])
 def get_key():
     file=request.files.get('key')
     if not file or file.filename=="":
@@ -91,7 +91,7 @@ def generate_key():
     return redirect(url_for('display_index',special_message="New key generated"))
 
 
-@app.route("/validate_user_key",methods=['POST'])
+@app.route("/validate_user_key",methods=['POST','GET'])
 def validate_user_key():
     key=request.form.get('user_key')
     if main.valid_key(key):
@@ -103,7 +103,7 @@ def validate_user_key():
 
         return render_template("key_generation.html", message=message,action='enter')
 
-@app.route("/download_key",methods=["POST"])
+@app.route("/download_key",methods=["POST","GET"])
 def download_key():
     key_value=session.get('key')
     if not key_value:

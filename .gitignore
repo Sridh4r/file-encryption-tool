@@ -1,7 +1,7 @@
 # Ignore Python cache files
 __pycache__/
 *.py[cod]
-
+.gitignore
 # Optional: Ignore the encryption key file if it contains sensitive data
 
 package.json
